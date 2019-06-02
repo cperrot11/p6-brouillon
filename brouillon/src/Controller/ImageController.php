@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Article;
 use App\Entity\Image;
 use App\Form\ImageType;
 use App\Repository\ImageRepository;
@@ -64,6 +65,7 @@ class ImageController extends AbstractController
     public function edit(Request $request, Image $image): Response
     {
         $form = $this->createForm(ImageType::class, $image);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

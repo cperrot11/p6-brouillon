@@ -5,7 +5,7 @@
 {% block body %}
     <h1>Article index</h1>
 
-    <table class="table">
+    <table border class="table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -22,6 +22,13 @@
                     <a href="{{ path('article_show', {'id': article.id}) }}">show</a>
                     <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
                 </td>
+                <tr>
+                    {% for images in article.image %}
+                        <td>-{{ images.description }}</td>
+                    {% else %}
+                        <td colspan="3">no images found</td>
+                    {% endfor %}
+                </tr>
             </tr>
         {% else %}
             <tr>
@@ -32,4 +39,5 @@
     </table>
 
     <a href="{{ path('article_new') }}">Create new</a>
+    <a href="{{ path('image_index') }}">Listes images</a>
 {% endblock %}

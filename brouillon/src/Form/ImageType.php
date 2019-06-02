@@ -2,8 +2,11 @@
 
 namespace App\Form;
 
+use App\Entity\Article;
 use App\Entity\Image;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,7 +16,11 @@ class ImageType extends AbstractType
     {
         $builder
             ->add('description')
-            ->add('article')
+//            ->add('article')
+            ->add('article', EntityType::class, [
+                'class' => Article::class,
+                'choice_label'=>'nom'
+            ])
         ;
     }
 
